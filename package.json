@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Учебный проект по курсу нетологии",
   "main": "index.js",
+  "type":"commonjs",
+
+  "bin": {
+    "cmd": "./index.js",
+    "current": "date.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/Ivan-Kudryavcev/NDSE-15/issues"
   },
-  "homepage": "https://github.com/Ivan-Kudryavcev/NDSE-15#readme"
+  "homepage": "https://github.com/Ivan-Kudryavcev/NDSE-15#readme",
+  "dependencies": {
+    "readline-promise": "^1.0.5",
+    "yargs": "^17.5.1"
+  }
 }
