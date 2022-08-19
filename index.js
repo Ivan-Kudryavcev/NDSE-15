@@ -23,6 +23,7 @@ const yargs = require('yargs');
       description: 'Дата в календарном месяце'
     })
   }, function (argv) {
+    console.log(argv);
     if (!argv.year && !argv.month && !argv.date && argv._.length >= 1) {
       console.log((new Date().getFullYear()+'-') + (new Date().getMonth()+1 > 9 ? new Date().getMonth()+1 : '0' + (new Date().getMonth()+1)) + ('-'+new Date().getDate()));
     }
@@ -34,6 +35,62 @@ const yargs = require('yargs');
     }
     if(argv.date) {
       console.log(new Date().getDate());
+    }
+  })
+  yargs.command('add', '', (yargs) => {
+    yargs.option('month', {
+      alias: 'm',
+      type: 'boolean',
+      default: false,
+      description: 'Текущий месяц',
+    })
+    .option('date', {
+      alias: 'd',
+      type: 'boolean',
+      default: false,
+      description: 'Дата в календарном месяце'
+    })
+  }, function (argv) {
+    console.log(argv, 'add');
+    if (argv._.length > 1) {
+      if(argv.month) {
+        if(new Date().getMonth()+1+argv._[1] > 12) {
+          console.log('Error');
+        } else {
+          console.log((new Date().getFullYear()+'-') + (new Date().getMonth()+1+argv._[1] > 9 ? new Date().getMonth()+1+argv._[1]: '0' + (new Date().getMonth()+1+argv._[1])) + ('-'+new Date().getDate()));
+        }
+      }
+      if(argv.date) {
+        if(new Date().getDate()+argv._[1] > 31) {
+          console.log('Error');
+        } else {
+          console.log((new Date().getFullYear()+'-') + (new Date().getMonth()+1 > 9 ? new Date().getMonth()+1: '0' + (new Date().getMonth()+1)) + ('-'+(new Date().getDate()+argv._[1])));
+        }
+      }
+    }
+  })
+  yargs.command('sub', '', (yargs) => {
+    yargs.option('month', {
+      alias: 'm',
+      type: 'boolean',
+      default: false,
+      description: 'Текущий месяц',
+    })
+    .option('date', {
+      alias: 'd',
+      type: 'boolean',
+      default: false,
+      description: 'Дата в календарном месяце'
+    })
+  }, function (argv) {
+    console.log(argv, 'sub');
+    if (argv._.length > 1) {
+      if(argv.month) {
+        console.log((new Date().getFullYear()+'-') + (new Date().getMonth()+1-argv._[1] > 9 ? new Date().getMonth()+1-argv._[1]: '0' + (new Date().getMonth()+1-argv._[1])) + ('-'+new Date().getDate()));
+      }
+      if(argv.date) {
+        console.log((new Date().getFullYear()+'-') + (new Date().getMonth()+1 > 9 ? new Date().getMonth()+1: '0' + (new Date().getMonth()+1)) + ('-'+(new Date().getDate()-argv._[1])));
+      }
     }
   })
   .help()
