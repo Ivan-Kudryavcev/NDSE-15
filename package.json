@@ -1,5 +1,5 @@
 {
-  "name": "ndse-15",
+  "name": "ndse-15-guess-num-game",
   "version": "1.0.0",
   "description": "Учебный проект по курсу нетологии",
   "main": "index.js",
@@ -17,6 +17,7 @@
     "url": "git+https://github.com/Ivan-Kudryavcev/NDSE-15.git"
   },
   "author": "Ivan Kudryavcev",
+  "email": "ivankudravtcev23@yandex.ru",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ivan-Kudryavcev/NDSE-15/issues"
